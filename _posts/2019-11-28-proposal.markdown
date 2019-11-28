@@ -20,9 +20,7 @@ Composers, performers and musicians frequently want to make edits, comments, and
 2. Bounding Box Prediction: [region-based CNN][handwritten] (Faster R-CNN), [semantic segmentation model][unet] (U-Net), [watershed semantic segmentation][watershed] (Deep Watershed)
 
 
-![DeepScores][https://www.mdpi.com/applsci/applsci-08-01488/article_deploy/html/images/applsci-08-01488-g005.png" | width=230]
-
-<img src="https://www.mdpi.com/applsci/applsci-08-01488/article_deploy/html/images/applsci-08-01488-g005.png" alt="DeepScores" width=230 height=300>
+<img src="https://www.mdpi.com/applsci/applsci-08-01488/article_deploy/html/images/applsci-08-01488-g005.png" alt="DeepScores" width='230' height='300'>
 
 <img src="https://www.mdpi.com/applsci/applsci-08-01488/article_deploy/html/images/applsci-08-01488-g006.png" alt="Muscima" width=230 height=300> 
 
