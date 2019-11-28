@@ -19,7 +19,7 @@ Composers, performers and musicians frequently want to make edits, comments, and
 1. Staff Line Removal: connected component analysis, [auto-encoders][auto-encoders]
 2. Bounding Box Prediction: [region-based CNN][handwritten] (Faster R-CNN), [semantic segmentation model][unet] (U-Net), [watershed semantic segmentation][watershed] (Deep Watershed)
 
-![baseline]({{ site.url }}/assets/baseline.png)
+![baseline](../assets/baseline.png)
 
 # Challenges
 1. Unbalanced dataset: rare symbols
