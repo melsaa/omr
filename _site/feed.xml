@@ -1,12 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/omr/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/omr/" rel="alternate" type="text/html" /><updated>2019-11-28T02:27:15+00:00</updated><id>http://localhost:4000/omr/feed.xml</id><title type="html">Optical Music Recognition</title><subtitle>We transform sheet music into a digital format.</subtitle><entry><title type="html">Proposal</title><link href="http://localhost:4000/omr/proposal/omr/2019/11/28/proposal.html" rel="alternate" type="text/html" title="Proposal" /><published>2019-11-28T00:57:49+00:00</published><updated>2019-11-28T00:57:49+00:00</updated><id>http://localhost:4000/omr/proposal/omr/2019/11/28/proposal</id><content type="html" xml:base="http://localhost:4000/omr/proposal/omr/2019/11/28/proposal.html">&lt;h1 id=&quot;background&quot;&gt;Background&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/omr/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/omr/" rel="alternate" type="text/html" /><updated>2019-11-28T04:14:44+00:00</updated><id>http://localhost:4000/omr/feed.xml</id><title type="html">Optical Music Recognition</title><subtitle>We transform sheet music into a digital format.</subtitle><entry><title type="html">Proposal</title><link href="http://localhost:4000/omr/proposal/omr/2019/11/28/proposal.html" rel="alternate" type="text/html" title="Proposal" /><published>2019-11-28T00:57:49+00:00</published><updated>2019-11-28T00:57:49+00:00</updated><id>http://localhost:4000/omr/proposal/omr/2019/11/28/proposal</id><content type="html" xml:base="http://localhost:4000/omr/proposal/omr/2019/11/28/proposal.html">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt;Composers, performers and musicians frequently want to make edits, comments, and changes to the sheet music. Doing so traditionally will produce hundreds or thousands of uncluttered pages of sheet music. Digital format is the perfect solution to better organize a collection of sheet music. It ensures replayability, enables large-scale musical theory analysis, and allows users to search for specific content systematically. Therefore, we present an end-to-end system to digitize music collection.&lt;/p&gt;
 
-&lt;h1 id=&quot;ideas&quot;&gt;Ideas&lt;/h1&gt;
-
-&lt;h1 id=&quot;methods&quot;&gt;Methods&lt;/h1&gt;
-
-&lt;h1 id=&quot;reference&quot;&gt;Reference&lt;/h1&gt;
+&lt;h2 id=&quot;current-status&quot;&gt;Current Status&lt;/h2&gt;
+&lt;h1 id=&quot;process&quot;&gt;Process&lt;/h1&gt;
 &lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1908.03608.pdf&quot;&gt;Understanding Optical Music Recognition&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://tuggeluk.github.io/deepscores/&quot;&gt;DeepScores Dataset&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Preprocessing: contrast enhancement, binarization, noise removal, skew correction, etc.&lt;/li&gt;
+  &lt;li&gt;Object Detection: finding and classifying all relevant symbols in the image&lt;/li&gt;
+  &lt;li&gt;Musical Semantic Reconstruction: reconstruct logical relationship (e.g. between a notehead and a stem) and temporal relationship&lt;/li&gt;
+  &lt;li&gt;Encoding: encode to a MIDI or MusicXML format&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;previous-studies&quot;&gt;Previous Studies&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;Staff Line Removal: connected component analysis, &lt;a href=&quot;https://github.com/ajgallego/staff-lines-removal&quot;&gt;auto-encoders&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Bounding Box Prediction: &lt;a href=&quot;https://ieeexplore.ieee.org/abstract/document/8395189&quot;&gt;region-based CNN&lt;/a&gt; (Faster R-CNN), &lt;a href=&quot;http://ismir2018.ismir.net/doc/pdfs/175_Paper.pdf&quot;&gt;semantic segmentation model&lt;/a&gt; (U-Net), &lt;a href=&quot;https://arxiv.org/abs/1805.10548&quot;&gt;watershed semantic segmentation&lt;/a&gt; (Deep Watershed)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/baseline.png&quot; alt=&quot;baseline&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;challenges&quot;&gt;Challenges&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;Unbalanced dataset: rare symbols&lt;/li&gt;
+  &lt;li&gt;Notation variability&lt;/li&gt;
+  &lt;li&gt;Musical symbol isolation: multiple symbols could be connected to each other (e.g. a beam group) or a single unit can have multiple disconnected parts (e.g. vermata, voltas)&lt;/li&gt;
+  &lt;li&gt;High density of more than 1,000 objects in a single page&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;methods&quot;&gt;Methods&lt;/h2&gt;
+&lt;h1 id=&quot;dataset&quot;&gt;Dataset&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://tuggeluk.github.io/deepscores/&quot;&gt;DeepScores&lt;/a&gt;: huge synthetic dataset in Common Western Modern Notation (CWMN), consisting of 300,000 images for performing symbol classification, image segmentation, and object detection&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ufal.mff.cuni.cz/muscima&quot;&gt;MUSCIMA++&lt;/a&gt;: handwritten sheet music dataset in CWMN, consisting of over 90,000 images for symbol detection and symbol semantic relationships&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.mdpi.com/2076-3417/8/9/1488&quot;&gt;A Baseline for General Music Object Detection with Deep Learning&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><summary type="html">Background</summary></entry></feed>
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1908.03608.pdf&quot;&gt;Understanding Optical Music Recognition&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">Background Composers, performers and musicians frequently want to make edits, comments, and changes to the sheet music. Doing so traditionally will produce hundreds or thousands of uncluttered pages of sheet music. Digital format is the perfect solution to better organize a collection of sheet music. It ensures replayability, enables large-scale musical theory analysis, and allows users to search for specific content systematically. Therefore, we present an end-to-end system to digitize music collection.</summary></entry></feed>

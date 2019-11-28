@@ -5,17 +5,43 @@ date:   2019-11-28 00:57:49 +0000
 categories: proposal omr
 ---
 
-# Background
+## Background
+Composers, performers and musicians frequently want to make edits, comments, and changes to the sheet music. Doing so traditionally will produce hundreds or thousands of uncluttered pages of sheet music. Digital format is the perfect solution to better organize a collection of sheet music. It ensures replayability, enables large-scale musical theory analysis, and allows users to search for specific content systematically. Therefore, we present an end-to-end system to digitize music collection. 
 
-# Ideas
+## Current Status
+# Process
+1. Preprocessing: contrast enhancement, binarization, noise removal, skew correction, etc.
+2. Object Detection: finding and classifying all relevant symbols in the image
+3. Musical Semantic Reconstruction: reconstruct logical relationship (e.g. between a notehead and a stem) and temporal relationship
+4. Encoding: encode to a MIDI or MusicXML format
 
-# Methods
+# Previous Studies
+1. Staff Line Removal: connected component analysis, [auto-encoders][auto-encoders]
+2. Bounding Box Prediction: [region-based CNN][handwritten] (Faster R-CNN), [semantic segmentation model][unet] (U-Net), [watershed semantic segmentation][watershed] (Deep Watershed)
 
-# Reference
-1. [Understanding Optical Music Recognition][omr-exp]
-2. [DeepScores Dataset][deepscores]
-3. [A Baseline for General Music Object Detection with Deep Learning][omr-baseline]
+![baseline]({{ site.url }}/assets/baseline.png)
+
+# Challenges
+1. Unbalanced dataset: rare symbols
+2. Notation variability
+3. Musical symbol isolation: multiple symbols could be connected to each other (e.g. a beam group) or a single unit can have multiple disconnected parts (e.g. vermata, voltas)
+4. High density of more than 1,000 objects in a single page
+
+## Methods
+# Dataset
+1. [DeepScores][deepscores]: huge synthetic dataset in Common Western Modern Notation (CWMN), consisting of 300,000 images for performing symbol classification, image segmentation, and object detection
+2. [MUSCIMA++][muscima]: handwritten sheet music dataset in CWMN, consisting of over 90,000 images for symbol detection and symbol semantic relationships
+
+## Reference
+
+1. [A Baseline for General Music Object Detection with Deep Learning][omr-baseline]
+2. [Understanding Optical Music Recognition][omr-exp]
 
 [omr-exp]: https://arxiv.org/pdf/1908.03608.pdf
 [deepscores]: https://tuggeluk.github.io/deepscores/
 [omr-baseline]: https://www.mdpi.com/2076-3417/8/9/1488
+[muscima]: https://ufal.mff.cuni.cz/muscima
+[auto-encoders]: https://github.com/ajgallego/staff-lines-removal
+[handwritten]: https://ieeexplore.ieee.org/abstract/document/8395189
+[unet]: http://ismir2018.ismir.net/doc/pdfs/175_Paper.pdf
+[watershed]: https://arxiv.org/abs/1805.10548

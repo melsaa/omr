@@ -4,7 +4,11 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+This is a final project of Cognitive Computing 2019 in National Taiwan University supervised by Prof. Winston Hsu.
+
+Team Members:
+1. Maria Elsa
+2. Erick Chandra
 
 You can find the source code for Minima at GitHub:
 [jekyll][jekyll-organization] /
