@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "Proposal"
+date:   2019-11-28 00:57:49 +0000
+categories: proposal omr
+---
+
+# Background
+
+# Ideas
+
+# Methods
+
+# Reference
+1. [Understanding Optical Music Recognition][omr-exp]
+2. [DeepScores Dataset][deepscores]
+3. [A Baseline for General Music Object Detection with Deep Learning][omr-baseline]
+
+[omr-exp]: https://arxiv.org/pdf/1908.03608.pdf
+[deepscores]: https://tuggeluk.github.io/deepscores/
+[omr-baseline]: https://www.mdpi.com/2076-3417/8/9/1488
