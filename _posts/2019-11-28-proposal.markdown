@@ -19,13 +19,13 @@ Composers, performers and musicians frequently want to make edits, comments, and
 1. Staff Line Removal: connected component analysis, [auto-encoders][auto-encoders]
 2. Bounding Box Prediction: [region-based CNN][handwritten] (Faster R-CNN), [semantic segmentation model][unet] (U-Net), [watershed semantic segmentation][watershed] (Deep Watershed)
 
-[
+
 <img src="https://www.mdpi.com/applsci/applsci-08-01488/article_deploy/html/images/applsci-08-01488-g005.png" alt="DeepScores" width=230 height=300>
-|
+
 <img src="https://www.mdpi.com/applsci/applsci-08-01488/article_deploy/html/images/applsci-08-01488-g006.png" alt="Muscima" width=230 height=300> 
-|
+
 <img src="https://www.mdpi.com/applsci/applsci-08-01488/article_deploy/html/images/applsci-08-01488-g007.png" alt="Capitan" width=230 height=300>
-]
+
 
 Results in terms of mAP (%) and w-mAP (%) with respect to the dataset and object detector model following the COCO evaluation protocol.
 
