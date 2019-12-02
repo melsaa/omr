@@ -9,7 +9,7 @@ categories: proposal omr
 Composers, performers and musicians frequently want to make edits, comments, and changes to the sheet music. Doing so traditionally will produce hundreds or thousands of uncluttered pages of sheet music. Digital format is the perfect solution to better organize a collection of sheet music. It ensures replayability, enables large-scale musical theory analysis, and allows users to search for specific content systematically. Therefore, we present an end-to-end system to digitize music collection. 
 
 ## Current Status
-# Process
+# Pipeline
 1. Preprocessing: contrast enhancement, binarization, noise removal, skew correction, etc.
 2. Object Detection: finding and classifying all relevant symbols in the image
 3. Musical Semantic Reconstruction: reconstruct logical relationship (e.g. between a notehead and a stem) and temporal relationship
@@ -48,6 +48,7 @@ Results in terms of mAP (%) and w-mAP (%) with respect to the dataset and object
 
 1. [A Baseline for General Music Object Detection with Deep Learning][omr-baseline]
 2. [Understanding Optical Music Recognition][omr-exp]
+3. [Gated-SCNN: Gated Shape CNNs for Semantic Segmentation][gated-scnn]
 
 [omr-exp]: https://arxiv.org/pdf/1908.03608.pdf
 [deepscores]: https://tuggeluk.github.io/deepscores/
@@ -57,3 +58,4 @@ Results in terms of mAP (%) and w-mAP (%) with respect to the dataset and object
 [handwritten]: https://ieeexplore.ieee.org/abstract/document/8395189
 [unet]: http://ismir2018.ismir.net/doc/pdfs/175_Paper.pdf
 [watershed]: https://arxiv.org/abs/1805.10548
+[gated-scnn]: https://arxiv.org/pdf/1907.05740.pdf
