@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Notation Assembly | Optical Music Recognition</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Notation Assembly" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Definition Notation Assembly is the process of recovering the music notation semantics from the detected and classified symbols. The output is a symbolic representation of the symbols and their relationships, typically as a graph." />
+<meta property="og:description" content="Definition Notation Assembly is the process of recovering the music notation semantics from the detected and classified symbols. The output is a symbolic representation of the symbols and their relationships, typically as a graph." />
+<link rel="canonical" href="http://localhost:4000/omr/2019/12/28/notation-assembly.html" />
+<meta property="og:url" content="http://localhost:4000/omr/2019/12/28/notation-assembly.html" />
+<meta property="og:site_name" content="Optical Music Recognition" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-28T14:18:09+00:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/omr/2019/12/28/notation-assembly.html"},"url":"http://localhost:4000/omr/2019/12/28/notation-assembly.html","headline":"Notation Assembly","dateModified":"2019-12-28T14:18:09+00:00","datePublished":"2019-12-28T14:18:09+00:00","description":"Definition Notation Assembly is the process of recovering the music notation semantics from the detected and classified symbols. The output is a symbolic representation of the symbols and their relationships, typically as a graph.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/omr/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/omr/feed.xml" title="Optical Music Recognition" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/omr/">Optical Music Recognition</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/omr/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Notation Assembly</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-12-28T14:18:09+00:00" itemprop="datePublished">Dec 28, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="definition">Definition</h2>
+<p>Notation Assembly is the process of recovering the music notation semantics from the detected and classified symbols. The output is a symbolic representation of the symbols and their relationships, typically as a graph.</p>
+
+<h2 id="current-approaches">Current Approaches</h2>
+<p>Due to the complexity of how musical semantics are inferred from the image, it is difficult (for now) to formulate it as a learnable optimization problem. While end-to-end systems for OMR do exist, they are still limited to a subset of music notation, at best. Some recent works have considered deep recurrent neural networks for monophonic music written in both typeset and handwritten modern notation.</p>
+
+<h3 id="using-a-grammar-for-a-reliable-full-score-recognition-system-1995">Using A Grammar for A Reliable Full Score Recognition System (1995)</h3>
+<p>Propose a grammar to formalize the musical knowledge on full scores with <strong>polyphonic</strong> staves.
+The objects on a score can be divided into 2 categories:</p>
+<ol>
+  <li>Constructs: composed of <strong>segments</strong> (stems, beams) and notehead</li>
+  <li>Symbolic: clefs, accidentals, etc. These can be considered as characters and recognized by using OCR</li>
+</ol>
+
+<h1 id="graphical-part">Graphical Part</h1>
+<p>Example: rules for <code class="highlighter-rouge">beamedNote</code> <br />
+<img src="https://i.imgur.com/OMviEnn.jpg" alt="beamedNote" width="450" height="300" /></p>
+
+<h1 id="syntactic-part">Syntactic Part</h1>
+<p>Introduce the notion of Step, which corresponds to the smallest duration in a column of vertically aligned notes. It can manage the simultaneity (i.e. the verticality) of notes on the same staff (in case of polyphony), and on the full scores. Informations associated to the staff (i.e. dynamics, slurs) are introduced in the grammar at Step level. <br />
+<img src="https://imgur.com/OUm7j1a.jpg" alt="syntactic" width="400" height="300" /></p>
+
+<h1 id="staves-system">Staves System</h1>
+<p>Assign each musical symbol to the right bar
+<img src="https://i.imgur.com/vbvG61W.jpg" alt="staffMap" width="400" height="300" /></p>
+
+<h3 id="a-starting-point-for-handwritten-music-recognition-2018">A Starting Point for Handwritten Music Recognition (2018)</h3>
+<ul>
+  <li>Input: handwritten music scores annotated at symbol level (need to re-label the dataset)</li>
+  <li>Output: binary matrix corresponds to rhythm (80 classes) and pitch(28 classes)</li>
+  <li>Rhythm: 4, 3, 2, 1, 0.5, …, dynamics, slurs, rests, sharp</li>
+  <li>Pitch: C1, D1, …</li>
+  <li>Pipeline: Input -&gt; Conv_block -&gt; Bi-LSTM -&gt; Dense_Layers -&gt; Output</li>
+  <li>Staves are cropped and processed independently, resized to 100px height</li>
+  <li>Use Convolutional Neural Network to extract meaningful features for each staves</li>
+  <li>Use Bidirectional LSTM to recover the musical semantics</li>
+  <li>Chords are translated into sequences: [Start Chord], [quarterNote, Line1], [quarterNote, Space2], [quarterNote, Line4], [End Chord]</li>
+  <li>Transfer learning from typeset to handwritten musical notation</li>
+  <li>Evaluation metric: Symbol Error Rate (SER) similar to Word Error Rate (WER)</li>
+</ul>
+
+<h3 id="towards-full-pipeline-handwritten-omr-with-musical-symbol-detection-by-u-nets-2018">Towards Full-Pipeline Handwritten OMR with Musical Symbol Detection by U-Nets (2018)</h3>
+<p>Pipeline: input -&gt; symbol detection (U-Net) -&gt; recover graph edges -&gt; recover precedence edges -&gt; convert to MIDI file</p>
+
+<h1 id="symbol-detection">Symbol Detection</h1>
+<ul>
+  <li>Propose Convex-Hull segmentation targets, works good to detect f-clefs and c-clefs <br />
+<img src="https://imgur.com/mDNMDR7.jpg" alt="convex" width="400" height="200" /></li>
+  <li>Using U-Net is viable, but is limited by the size of receptive field: the middle of a long stem looks exactly the same as a barline</li>
+  <li>Further research: leverage syntactic properties of music notation: self-attention layer that allows building up the final output from partial recognition results</li>
+</ul>
+
+<h1 id="notation-assembly-and-pitch-inference">Notation Assembly and Pitch Inference</h1>
+<ul>
+  <li>MUSIMA++ semantics are represented as an oriented graph, once the graph is recovered, one can perform deterministic pitch inference</li>
+  <li>Symbol detection outputs vertices of the notation graph; the next step therefore is to recover graph edges</li>
+  <li>Method: same as [here][muscima], train a binary classifier over ordered symbol pairs</li>
+  <li>Drawback: make embarrassing erros, i.e. connect noteheads with irrelevant symbols (multiple adjacent stems, beams from different staff)</li>
+  <li>Further research: combine with grammar rules to reduce errors</li>
+</ul>
+
+<h2 id="reference">Reference:</h2>
+<ol>
+  <li><a href="https://arxiv.org/pdf/1908.03608.pdf">Understanding Optical Music Recognition</a></li>
+  <li><a href="http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=F44590BADB2A8997A735F3E5F4391416?doi=10.1.1.29.4927&amp;rep=rep1&amp;type=pdf">Using A Grammar for A Reliable Full Score Recognition System</a></li>
+  <li><a href="https://openreview.net/pdf?id=SygqKLQrXQ">A Starting Point for Handwritten Music Recognition</a></li>
+  <li><a href="https://pdfs.semanticscholar.org/f05c/b3674df33d35e562ca79b9b3af2e10c1a88a.pdf">Towards Full-Pipeline Handwritten OMR with Musical Symbol Detection by U-Nets</a></li>
+  <li><a href="https://arxiv.org/pdf/1507.05717.pdf">An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition</a></li>
+  <li><a href="https://www.mdpi.com/2076-3417/8/4/606">End-to-End Neural Optical Music Recognition of Monophonic Scores</a></li>
+</ol>
+
+
+  </div><a class="u-url" href="/omr/2019/12/28/notation-assembly.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/omr/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Optical Music Recognition</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Optical Music Recognition</li><li><a class="u-email" href="mailto:m_elsa@ymail.com">m_elsa@ymail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/melsaa"><svg class="svg-icon"><use xlink:href="/omr/assets/minima-social-icons.svg#github"></use></svg> <span class="username">melsaa</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>We transform sheet music into a digital format.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
